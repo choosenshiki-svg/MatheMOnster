@@ -1415,32 +1415,56 @@ public static class MathEquationBuilder
         }
     }
 
-    private static void ApplyDirectionalOperators(
-    List<Node> nodes, char operation, HashSet<BallNumber> ambiguous)
+        private static void ApplyDirectionalOperators(
+        List<Node> nodes, char operation, HashSet<BallNumber> ambiguous)
     {
+        // Shared-input rule: two+ same-type triangles competing for the same
+        // input operand are ambiguous. Red them before any chain work.
+        MarkSharedInputTriangles(nodes, operation, ambiguous);
+
+        if (operation == '^')
+        {
+            // Power chains are rejected outright (non-associative and
+            // ambiguous to read). Any region that still has two live '^'
+            // triangles in a chain after MarkSharedInputTriangles has been
+            // cleared is unsolvable. We bind nothing here — leftover '^'
+            // nodes will be flagged by SolveRegion's collapse fallback.
+            return;
+        }
+
+        // ---- Chain-aware binding ----
+        // Repeatedly find a chain-start (a triangle whose outside/input
+        // operand is not produced by another unbound triangle of the same
+        // type), bind it, and loop. A chain-start always exists for any
+        // acyclic chain; if none can be found, we have a circular chain and
+        // the region collapses to leftover nodes → red via fallback.
         while (true)
         {
-            Node operatorNode = null;
-            foreach (Node node in nodes)
-            {
-                if (!node.alive || !(node.expr is OpNode op) ||
-                    op.op != operation || op.directionalOperator == null ||
-                    op.left != null || op.right != null)
-                    continue;
+            var triangles = CollectUnboundTriangles(nodes, operation);
+            if (triangles.Count == 0) return;
 
-                operatorNode = node;
-                break;
+            Node chainStart = FindChainStart(triangles);
+            if (chainStart == null)
+            {
+                // Circular or otherwise unorderable chain — red every
+                // remaining triangle of this type.
+                foreach (Node t in triangles)
+                {
+                    foreach (BallNumber ball in t.expr.sourceBalls)
+                        if (ball != null) ambiguous.Add(ball);
+                    t.alive = false;
+                }
+                return;
             }
 
-            if (operatorNode == null) return;
-
-            var opExpr = (OpNode)operatorNode.expr;
+            // ---- Bind this chain-start exactly the way the old loop did ----
+            var opExpr = (OpNode)chainStart.expr;
             Node outsideOperand = null;
             Node insideOperand  = null;
             bool invalidNeighbor = false;
             bool adjacentCrescent = false;
 
-            foreach (Node neighbor in LiveNeighbors(operatorNode))
+            foreach (Node neighbor in LiveNeighbors(chainStart))
             {
                 if (neighbor.expr is EqualsMarker) continue;
 
@@ -1485,14 +1509,8 @@ public static class MathEquationBuilder
                     else          anyOutside = true;
                 }
 
-                if (!anyInRange)
-                    continue;
-
-                if (anyInside && anyOutside)
-                {
-                    invalidNeighbor = true;
-                    continue;
-                }
+                if (!anyInRange) continue;
+                if (anyInside && anyOutside) { invalidNeighbor = true; continue; }
 
                 if (anyInside)
                 {
@@ -1510,8 +1528,8 @@ public static class MathEquationBuilder
                 outsideOperand == null || insideOperand == null)
             {
                 foreach (BallNumber ball in opExpr.sourceBalls)
-                    ambiguous.Add(ball);
-                operatorNode.alive = false;
+                    if (ball != null) ambiguous.Add(ball);
+                chainStart.alive = false;
                 continue;
             }
 
@@ -1528,9 +1546,224 @@ public static class MathEquationBuilder
                 };
             }
             result.sourceBalls.AddRange(opExpr.sourceBalls);
-            operatorNode.expr = result;
-            AbsorbInto(nodes, operatorNode, new List<Node> { outsideOperand, insideOperand });
+            chainStart.expr = result;
+            AbsorbInto(nodes, chainStart, new List<Node> { outsideOperand, insideOperand });
         }
+    }
+
+        /// <summary>
+    /// Every live, unbound triangle of the given operator type.
+    /// </summary>
+    private static List<Node> CollectUnboundTriangles(List<Node> nodes, char operation)
+    {
+        var result = new List<Node>();
+        foreach (Node n in nodes)
+        {
+            if (!n.alive) continue;
+            if (!(n.expr is OpNode op)) continue;
+            if (op.directionalOperator == null) continue;
+            if (op.op != operation) continue;
+            if (op.left != null || op.right != null) continue;   // already bound
+            result.Add(n);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// A chain-start is a triangle whose input (outside/flat-side) operand is
+    /// NOT the output (inside/tip-side) operand of another unbound triangle of
+    /// the same type. Returns null if no chain-start exists (circular chain).
+    /// </summary>
+    private static Node FindChainStart(List<Node> triangles)
+    {
+        if (triangles.Count == 0) return null;
+        if (triangles.Count == 1) return triangles[0];
+
+        // For each triangle, figure out which of its live neighbors is its
+        // input (outside cone). If none of those is the inside operand of
+        // another triangle, it's a start.
+        foreach (Node t in triangles)
+        {
+            var opExpr = (OpNode)t.expr;
+            Node inputNeighbor = FindSingleOperand(t, opExpr, wantInside: false);
+            if (inputNeighbor == null) continue;   // can't classify; skip
+
+            bool consumedByAnother = false;
+            foreach (Node other in triangles)
+            {
+                if (other == t) continue;
+
+                Node otherOutput = FindSingleOperand(
+                    other, (OpNode)other.expr, wantInside: true);
+
+                if (otherOutput == inputNeighbor)
+                {
+                    consumedByAnother = true;
+                    break;
+                }
+            }
+
+            if (!consumedByAnother) return t;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Locates the single live neighbor of 't' that is on 't's inside
+    /// (tip) or outside (flat) side. Returns null if zero or multiple
+    /// matches — the triangle can't be classified as start or non-start.
+    /// </summary>
+    private static Node FindSingleOperand(Node t, OpNode opExpr, bool wantInside)
+    {
+        Node found = null;
+        foreach (Node neighbor in LiveNeighbors(t))
+        {
+            if (neighbor.expr is EqualsMarker) continue;
+
+            if (neighbor.expr is OpNode nbOp &&
+                nbOp.directionalOperator != null &&
+                nbOp.left == null && nbOp.right == null)
+                continue;   // adjacent crescent, not an operand
+
+            if (IsPendingOperator(neighbor.expr)) continue;
+            if (neighbor.expr.sourceBalls.Count == 0) continue;
+
+            bool matches = false;
+            foreach (BallNumber ball in neighbor.expr.sourceBalls)
+            {
+                if (ball == null) continue;
+                Collider2D collider = ball.GetComponent<Collider2D>();
+                if (collider == null) continue;
+
+                Vector2 center = collider.bounds.center;
+                float radius = Mathf.Max(
+                    collider.bounds.extents.x,
+                    collider.bounds.extents.y);
+
+                if (!opExpr.directionalOperator.TryGetOperandSide(
+                        center, radius, out bool isInside))
+                    continue;
+
+                if (isInside == wantInside) { matches = true; break; }
+            }
+
+            if (matches)
+            {
+                if (found != null) return null;   // multiple matches → ambiguous
+                found = neighbor;
+            }
+        }
+        return found;
+    }
+
+        /// <summary>
+    /// Detects a shared input operand among same-type directional operators
+    /// and flags them red.
+    ///
+    /// A node N is a shared input when two or more live triangles with
+    /// op == operation each have N in their outside (input) cone. Those
+    /// triangles cannot all consume N as their input, so the whole cluster
+    /// is ambiguous. We mark N and the competing triangles as ambiguous and
+    /// kill their nodes so the rest of the rewrite skips them.
+    ///
+    /// Runs once per ApplyDirectionalOperators call, so:
+    ///   - it fires on raw single-ball inputs (first call of each op type), and
+    ///   - it fires again after any earlier fold that produced a shared input
+    ///     group (later call of the same op type, or later op type in the
+    ///     precedence chain).
+    ///
+    /// Same-output sharing (2 -> 3 <- 4) and chains (2 -> 3 -> 4) never fire:
+    /// they are captured as either shared inside operands or output→input,
+    /// neither of which matches this check.
+    /// </summary>
+    private static void MarkSharedInputTriangles(
+        List<Node> nodes, char operation, HashSet<BallNumber> ambiguous)
+    {
+        // Collect the live triangle nodes of this exact operator type.
+        var triangles = new List<Node>();
+        foreach (Node n in nodes)
+        {
+            if (!n.alive) continue;
+            if (!(n.expr is OpNode op)) continue;
+            if (op.directionalOperator == null) continue;
+            if (op.op != operation) continue;
+            if (op.left != null || op.right != null) continue;   // already bound
+            triangles.Add(n);
+        }
+        if (triangles.Count < 2) return;
+
+        // For each live non-triangle node that has operands, count how many of
+        // these triangles treat it as their input (outside cone). If ≥2, mark.
+        var toKill = new HashSet<Node>();
+
+        foreach (Node candidate in nodes)
+        {
+            if (!candidate.alive) continue;
+            if (toKill.Contains(candidate)) continue;
+
+            // Skip candidates that are themselves pending triangles of this type.
+            if (candidate.expr is OpNode co &&
+                co.directionalOperator != null &&
+                co.op == operation &&
+                co.left == null && co.right == null)
+                continue;
+
+            // Skip nodes with no source balls — nothing geometric to test.
+            if (candidate.expr.sourceBalls.Count == 0) continue;
+
+            var consumers = new List<Node>();
+            foreach (Node t in triangles)
+            {
+                if (t == candidate) continue;
+                if (!t.alive) continue;
+
+                bool seesAsInput = false;
+                foreach (BallNumber ball in candidate.expr.sourceBalls)
+                {
+                    if (ball == null) continue;
+                    Collider2D collider = ball.GetComponent<Collider2D>();
+                    if (collider == null) continue;
+
+                    Vector2 center = collider.bounds.center;
+                    float radius = Mathf.Max(
+                        collider.bounds.extents.x,
+                        collider.bounds.extents.y);
+
+                    if (!((OpNode)t.expr).directionalOperator.TryGetOperandSide(
+                            center, radius, out bool isInside))
+                        continue;
+
+                    if (!isInside)
+                    {
+                        seesAsInput = true;
+                        break;
+                    }
+                }
+
+                if (seesAsInput) consumers.Add(t);
+            }
+
+            if (consumers.Count >= 2)
+            {
+                // Flag the shared input node's balls.
+                foreach (BallNumber ball in candidate.expr.sourceBalls)
+                    if (ball != null) ambiguous.Add(ball);
+
+                // Flag every competing triangle's balls.
+                foreach (Node t in consumers)
+                {
+                    foreach (BallNumber ball in t.expr.sourceBalls)
+                        if (ball != null) ambiguous.Add(ball);
+                    toKill.Add(t);
+                }
+
+                toKill.Add(candidate);
+            }
+        }
+
+        foreach (Node n in toKill)
+            n.alive = false;
     }
 
     private static bool IsPendingOperator(ExprNode expression)
