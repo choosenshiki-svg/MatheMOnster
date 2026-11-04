@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fcf7d299feb35a428f0ee11dccaf7c1, type: 3}
+  m_Name: Custom Bag
+  m_EditorClassIdentifier: 
+  entries:
+  - content: 1
+    count: 8
+  - content: 2
+    count: 6
+  - content: 3
+    count: 5
+  - content: 4
+    count: 4
+  - content: 5
+    count: 3
+  - content: 6
+    count: 3
+  - content: 7
+    count: 1
+  - content: 8
+    count: 2
+  - content: 9
+    count: 1
+  - content: 10
+    count: 1
+  - content: -1
+    count: 5
+  - content: -2
+    count: 3
+  - content: -3
+    count: 2
+  - content: -4
+    count: 1
+  - content: -5
+    count: 1
+  - content: -6
+    count: 1
+  - content: -7
+    count: 0
+  - content: -8
+    count: 1
+  - content: -9
+    count: 0
+  - content: -10
+    count: 0
+  - content: +
+    count: 20
+  - content: '*'
+    count: 15
+  - content: /
+    count: 2
+  - content: /3
+    count: 1
+  - content: /4
+    count: 1
+  - content: /5
+    count: 1
+  - content: /6
+    count: 1
+  - content: ^
+    count: 3
+  - content: ^3
+    count: 2
+  - content: ^4
+    count: 1
+  - content: =
+    count: 6
+  - content: x
+    count: 1
+  - content: y
+    count: 1
