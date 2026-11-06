@@ -1422,16 +1422,6 @@ public static class MathEquationBuilder
         // input operand are ambiguous. Red them before any chain work.
         MarkSharedInputTriangles(nodes, operation, ambiguous);
 
-        if (operation == '^')
-        {
-            // Power chains are rejected outright (non-associative and
-            // ambiguous to read). Any region that still has two live '^'
-            // triangles in a chain after MarkSharedInputTriangles has been
-            // cleared is unsolvable. We bind nothing here — leftover '^'
-            // nodes will be flagged by SolveRegion's collapse fallback.
-            return;
-        }
-
         // ---- Chain-aware binding ----
         // Repeatedly find a chain-start (a triangle whose outside/input
         // operand is not produced by another unbound triangle of the same
@@ -1512,15 +1502,37 @@ public static class MathEquationBuilder
                 if (!anyInRange) continue;
                 if (anyInside && anyOutside) { invalidNeighbor = true; continue; }
 
-                if (anyInside)
+                                if (operation == '^')
                 {
-                    if (insideOperand != null) invalidNeighbor = true;
-                    insideOperand = neighbor;
+                    // For power triangles, tip side (isInside) is the BASE
+                    // (left operand of base^exp). Flat side (outside) is the
+                    // EXPONENT (right operand). We store them as
+                    // outsideOperand = base, insideOperand = exponent so the
+                    // rest of the method (result construction, AbsorbInto)
+                    // works unchanged.
+                    if (anyInside)
+                    {
+                        if (outsideOperand != null) invalidNeighbor = true;
+                        outsideOperand = neighbor;   // tip side = base
+                    }
+                    else
+                    {
+                        if (insideOperand != null) invalidNeighbor = true;
+                        insideOperand = neighbor;    // flat side = exponent
+                    }
                 }
                 else
                 {
-                    if (outsideOperand != null) invalidNeighbor = true;
-                    outsideOperand = neighbor;
+                    if (anyInside)
+                    {
+                        if (insideOperand != null) invalidNeighbor = true;
+                        insideOperand = neighbor;
+                    }
+                    else
+                    {
+                        if (outsideOperand != null) invalidNeighbor = true;
+                        outsideOperand = neighbor;
+                    }
                 }
             }
 

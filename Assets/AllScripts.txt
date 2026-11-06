@@ -1,4 +1,6 @@
-﻿// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagBallMarker.cs =====
+﻿
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagBallMarker.cs =====
+
 using UnityEngine;
 
 /// <summary>
@@ -6,7 +8,8 @@ using UnityEngine;
 /// </summary>
 public class BagBallMarker : MonoBehaviour { }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagButton.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagButton.cs =====
+
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -66,7 +69,8 @@ public class BagButton : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagCounterDisplay.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagCounterDisplay.cs =====
+
 using System.Collections.Generic;
 using System.Text;
 using Unity.Netcode;
@@ -229,7 +233,8 @@ public class BagCounterDisplay : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagDefinition.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagDefinition.cs =====
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -255,7 +260,8 @@ public class BagDefinition : ScriptableObject
     public List<Entry> entries = new List<Entry>();
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagDefinitionFiller.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagDefinitionFiller.cs =====
+
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
@@ -406,33 +412,35 @@ public static class BagDefinitionFiller
         Add(def, "9", 1); 
         Add(def, "10", 1); 
 
-         Add(def, "-1", 5); //
-        Add(def, "-2", 3); //
-        Add(def, "-3", 2); //
-        Add(def, "-4", 1); //
-        Add(def, "-5", 1); 
+         Add(def, "-1", 2); //
+        Add(def, "-2", 1); //
+        Add(def, "-3", 1); //
+        Add(def, "-4", 0); //
+        Add(def, "-5", 0); 
         Add(def, "-6", 1); 
         Add(def, "-7", 0); 
-        Add(def, "-8", 1);  
+        Add(def, "-8", 0);  
         Add(def, "-9", 0); 
         Add(def, "-10", 0); 
 
-        Add(def, "+", 12); //
-        Add(def, "*", 10); //
-        Add(def, "/", 2); 
-        Add(def, "/3", 1); 
-        Add(def, "/4", 1); 
-        Add(def, "/5", 1); 
-        Add(def, "/6", 1);
+        Add(def, "+", 8); //
+        Add(def, "-", 6); //
+        Add(def, "*", 2); //
+        Add(def, "/", 4); 
+        Add(def, "/2", 2); 
+        Add(def, "/4", 0); 
+        Add(def, "/5", 0); 
+        Add(def, "/6", 0);
 
-        Add(def, "^", 3);
-        Add(def, "^3", 2);
-        Add(def, "^4", 1);
+        Add(def, "^", 2);
+        Add(def, "^2", 1);
+        Add(def, "^3", 1);
+        Add(def, "^4", 0);
 
 
-        Add(def, "=", 6); //
-        Add(def, "x", 1); 
-        Add(def, "y", 1); 
+        Add(def, "=", 12); //
+        Add(def, "x", 0); 
+        Add(def, "y", 0); 
       
 
     }
@@ -481,7 +489,8 @@ public static class BagDefinitionFiller
 }
 #endif
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagLibrary.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagLibrary.cs =====
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -520,7 +529,8 @@ public class BagLibrary : ScriptableObject
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagManager.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagManager.cs =====
+
 using System;
 using System.Collections.Generic;
 using Unity.Collections;
@@ -1113,7 +1123,8 @@ public class BagManager : NetworkBehaviour
 #endif
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagMenuUI.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagMenuUI.cs =====
+
 using Unity.Netcode;
 using UnityEngine;
 
@@ -1306,7 +1317,8 @@ public class BagMenuUI : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BagRing.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BagRing.cs =====
+
 using Unity.Netcode;
 using UnityEngine;
 
@@ -1421,7 +1433,8 @@ public class BagRing : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallAppearance.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallAppearance.cs =====
+
 using UnityEngine;
 
 // Creates each ball's text label and colors the ball according to its content type.
@@ -1775,7 +1788,8 @@ public class BallAppearance : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallConnectionRules.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallConnectionRules.cs =====
+
 using UnityEngine;
 
 /// <summary>
@@ -1834,7 +1848,8 @@ public static class BallConnectionRules
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallDrag.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallDrag.cs =====
+
 using UnityEngine;
 using Unity.Netcode;
 
@@ -2211,7 +2226,8 @@ public class BallDrag : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallImpactLimiter.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallImpactLimiter.cs =====
+
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -2243,7 +2259,8 @@ public class BallImpactLimiter : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallInputController.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallInputController.cs =====
+
 using UnityEngine;
 
 // Reads keyboard input for one ball and manages the active edit session.
@@ -2608,7 +2625,8 @@ public class BallInputController : MonoBehaviour
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallNumber.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallNumber.cs =====
+
 using System.Globalization;
 using UnityEngine;
 
@@ -3016,7 +3034,8 @@ public class BallNumber : MonoBehaviour
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallPrefabSwapper.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallPrefabSwapper.cs =====
+
 using Unity.Netcode;
 using UnityEngine;
 
@@ -3203,7 +3222,8 @@ public class BallPrefabSwapper : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallSpeedCap.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallSpeedCap.cs =====
+
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -3223,7 +3243,8 @@ public class BallSpeedCap : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallState.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallState.cs =====
+
 using System;
 using System.IO;
 using UnityEngine;
@@ -3343,7 +3364,8 @@ public struct BallState
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallSyntaxChecker.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallSyntaxChecker.cs =====
+
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -3506,7 +3528,8 @@ public static class BallSyntaxChecker
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BallTransferManager.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BallTransferManager.cs =====
+
 using UnityEngine;
 using Unity.Netcode;
 
@@ -3976,7 +3999,8 @@ public class BallTransferManager : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\BoardHandDevider.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\BoardHandDevider.cs =====
+
 using UnityEngine;
 
 /// <summary>
@@ -4020,7 +4044,8 @@ public class BoardHandDivider : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\DirectionalOperator.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\DirectionalOperator.cs =====
+
 using UnityEngine;
 
 /// <summary>
@@ -4043,14 +4068,16 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public sealed class DirectionalOperator : MonoBehaviour
 {
-    [Header("Cone tolerances")]
     [Tooltip("Half-angle (degrees) of the input cone (flat side).")]
+    [Range(0f, 180f)]
     [SerializeField] private float inputConeHalfAngle = 75f;
 
     [Tooltip("Half-angle (degrees) of the output cone (tip side).")]
+    [Range(0f, 180f)]
     [SerializeField] private float outputConeHalfAngle = 75f;
 
     [Tooltip("Extra reach beyond the operand's own radius.")]
+    [Range(0f, 1f)]
     [SerializeField] private float capturePadding = 0.10f;
 
     private BallNumber        ball;
@@ -4075,12 +4102,24 @@ public sealed class DirectionalOperator : MonoBehaviour
     private SpriteRenderer outputPortMarker;
     private static Sprite _dotSprite;
 
+        [Range(0f, 1440f)]
     [SerializeField] private float tipTurnSpeedDegPerSec = 720f;
+
     private float smoothedTipAngle;
 
-    [Header("Rotate-drag (grab point leads)")]
-    [Tooltip("Max turn speed (deg/sec) when aligning the grab point to the mouse movement direction.")]
-    [SerializeField] private float grabTurnSpeedDegPerSec = 360f;
+        [Header("Rotate-drag (grab point leads)")]
+    [Tooltip("Minimum turn speed (deg/sec) at near-zero mouse movement.")]
+    [Range(0f, 360f)]
+    [SerializeField] private float grabMinTurnSpeedDegPerSec = 45f;
+
+    [Tooltip("Maximum turn speed (deg/sec) at fast mouse movement. Never exceeded.")]
+    [Range(0f, 1080f)]
+    [SerializeField] private float grabMaxTurnSpeedDegPerSec = 360f;
+
+    [Tooltip("Mouse speed (world units/sec) at which the triangle turns at the " +
+             "midpoint between min and max speed. Lower = ramps up faster.")]
+    [Range(0.05f, 10f)]
+    [SerializeField] private float grabMidpointMouseSpeed = 1f;
 
     private Vector2 _grabLocal;
     private bool    _hasGrabLocal;
@@ -4336,9 +4375,27 @@ public sealed class DirectionalOperator : MonoBehaviour
         float targetRotation = moveAngleDeg - _grabLocalAngleDeg;
         targetRotation       = Mathf.Repeat(targetRotation + 180f, 360f) - 180f;
 
-        // Ease currentTipAngle toward targetRotation at max turn speed.
+                // Progressive turn rate: slow mouse → near min speed, fast mouse →
+        // ramps up to max. Smooth curve (quadratic ease-in below the midpoint,
+        // inverse-square asymptote above it) so there is no hard step.
+        float dt         = Mathf.Max(Time.deltaTime, 1e-5f);
+        float mouseSpeed = mouseWorldDelta.magnitude / dt;
+
+        float x = grabMidpointMouseSpeed > 1e-4f
+            ? mouseSpeed / grabMidpointMouseSpeed
+            : 1f;
+
+        float fraction = x < 1f
+            ? 0.5f * x * x                 // 0 → 0.5
+            : 1f - 0.5f / (x * x);         // 0.5 → 1
+
+        float turnSpeed = Mathf.Lerp(
+            grabMinTurnSpeedDegPerSec,
+            grabMaxTurnSpeedDegPerSec,
+            Mathf.Clamp01(fraction));
+
         float deltaAngle = Mathf.DeltaAngle(currentTipAngle, targetRotation);
-        float maxStep    = grabTurnSpeedDegPerSec * Time.deltaTime;
+        float maxStep    = turnSpeed * dt;
         if (Mathf.Abs(deltaAngle) <= maxStep)
             currentTipAngle = targetRotation;
         else
@@ -4560,7 +4617,8 @@ public sealed class DirectionalOperator : MonoBehaviour
  
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\DualCameraController.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\DualCameraController.cs =====
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -4677,7 +4735,8 @@ public class DualCameraController : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\DualCameraSetup.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\DualCameraSetup.cs =====
+
 using UnityEngine;
 
 /// <summary>
@@ -4774,7 +4833,8 @@ public class DualCameraSetup : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\EquationListDisplay.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\EquationListDisplay.cs =====
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -5057,7 +5117,8 @@ public class EquationListDisplay : MonoBehaviour
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\GameOverview.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\GameOverview.cs =====
+
 // ===== FILE: Assets/scripts/GameOverview.cs =====
 //
 // =====================================================================
@@ -5233,7 +5294,8 @@ public class EquationListDisplay : MonoBehaviour
 //
 // =====================================================================
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\HandBagCounterReporter.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\HandBagCounterReporter.cs =====
+
 using Unity.Netcode;
 using UnityEngine;
 
@@ -5269,7 +5331,8 @@ public class HandBagCountReporter : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\LassoSelection.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\LassoSelection.cs =====
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -5500,7 +5563,8 @@ public class LassoSelection : MonoBehaviour
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\LocalHandBall.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\LocalHandBall.cs =====
+
 using UnityEngine;
 
 /// <summary>
@@ -5519,7 +5583,8 @@ public class LocalHandBall : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\LockRing.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\LockRing.cs =====
+
 using Unity.Netcode;
 using UnityEngine;
 
@@ -5619,7 +5684,8 @@ public class LockRing : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\MathEquationBuilder.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\MathEquationBuilder.cs =====
+
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -5787,13 +5853,14 @@ public static class MathEquationBuilder
         }
         if (!hasEquals) return result;
 
-                if (TryBuildConnectedEquation(cluster, out ConnectedEquation eq,
+                if (TryBuildConnectedEquation(cluster,
+                out List<ConnectedEquation> eqs,
+                out HashSet<BallNumber> filled,
                 out HashSet<BallNumber> clusterIgnored,
                 out HashSet<BallNumber> clusterAmbiguous))
         {
-            result.equations.Add(eq);
-            // Use clusterAmbiguous (every locally flagged ball), not
-            // eq.ambiguousBalls (live-only). Removed balls must still be red.
+            result.equations.AddRange(eqs);
+            result.filledBalls.UnionWith(filled);
             result.allAmbiguousBalls.UnionWith(clusterAmbiguous);
         }
         else
@@ -5829,11 +5896,9 @@ public static class MathEquationBuilder
         public List<ConnectedEquation> equations = new List<ConnectedEquation>();
         public HashSet<BallNumber> allAmbiguousBalls = new HashSet<BallNumber>();
 
-        /// <summary>
-        /// Every pair of connected balls considered by the builder, as unordered
-        /// pairs. Spawner renders connection lines from this list so the visuals
-        /// match the math graph exactly.
-        /// </summary>
+        /// <summary>Balls whose solver output was written during this solve pass.</summary>
+        public HashSet<BallNumber> filledBalls = new HashSet<BallNumber>();
+
         public List<(BallNumber a, BallNumber b)> connectedPairs =
             new List<(BallNumber, BallNumber)>();
     }
@@ -5876,6 +5941,7 @@ public static class MathEquationBuilder
         public ExprNode fixedExponent;
         public bool hasFixedExponent;
         public DirectionalOperator directionalOperator;
+        public bool implicitMultiplication;   // NEW: render with no '*' between operands
     }
 
     public sealed class FuncNode : ExprNode
@@ -5937,11 +6003,13 @@ public static class MathEquationBuilder
 
         private static bool TryBuildConnectedEquation(
         List<BallNumber> cluster,
-        out ConnectedEquation equation,
+        out List<ConnectedEquation> equations,
+        out HashSet<BallNumber> filledBalls,
         out HashSet<BallNumber> clusterIgnored,
         out HashSet<BallNumber> clusterAmbiguous)
     {
-        equation = null;
+        equations = new List<ConnectedEquation>();
+        filledBalls = new HashSet<BallNumber>();
         clusterIgnored = new HashSet<BallNumber>();
         clusterAmbiguous = new HashSet<BallNumber>();
 
@@ -6054,71 +6122,220 @@ public static class MathEquationBuilder
         // We only support one equation per cluster for now (same as before:
         // multiple '=' in a cluster is rejected). If your game supports
         // separate equations in one cluster, this is where to branch.
-        if (equalsNodes.Count != 1)
+                // --- Build one ConnectedEquation per '=' ---
+        // Each '=' gets its own slot list: the regions graph-adjacent to it.
+        // A region adjacent to two '=' contributes its value to both.
+        foreach (Node equalsNode in equalsNodes)
         {
-            foreach (var eqNode in equalsNodes) clusterAmbiguous.Add(eqNode.expr.sourceBalls[0]);
-            return false;
-        }
+            var slotRegions = new List<ExprNode>();
+            var slotBalls = new List<List<BallNumber>>();
+            var seenRegionIndexes = new HashSet<int>();
 
-        Node equalsNode = equalsNodes[0];
-        var slotRegions = new List<ExprNode>();
-        var slotBalls = new List<List<BallNumber>>();
-        foreach (Node nb in equalsNode.neighbors)
-        {
-            if (nb == null || !nb.alive) continue;
-            int idx = regionIndexOf(regions, nb);
-            if (idx < 0) continue;
-            slotRegions.Add(regionResults[idx]);
-            slotBalls.Add(regionBalls[idx]);
-        }
+            foreach (Node nb in equalsNode.neighbors)
+            {
+                if (nb == null || !nb.alive) continue;
+                int idx = regionIndexOf(regions, nb);
+                if (idx < 0) continue;
+                if (!seenRegionIndexes.Add(idx)) continue;   // dedupe
+                slotRegions.Add(regionResults[idx]);
+                slotBalls.Add(regionBalls[idx]);
+            }
 
-        if (slotRegions.Count < 2)
-        {
-            // 0 or 1 slot: '=' is blue. Still return true so the visual layer
-            // can color it blue; callers check eq.equationState.
-            var blueEq = new ConnectedEquation
+            // Balls belonging to this '=' : union of slot balls + the '=' ball.
+            var eqBalls = new List<BallNumber>();
+            var eqBallSet = new HashSet<BallNumber>();
+            foreach (var bl in slotBalls)
+                foreach (var b in bl)
+                    if (b != null && eqBallSet.Add(b)) eqBalls.Add(b);
+            if (equalsNode.expr.sourceBalls.Count > 0)
+            {
+                var eqBall = equalsNode.expr.sourceBalls[0];
+                if (eqBall != null && eqBallSet.Add(eqBall)) eqBalls.Add(eqBall);
+            }
+
+            var eq = new ConnectedEquation
             {
                 left = slotRegions.Count > 0 ? slotRegions[0] : null,
-                right = null,
-                balls = cluster,
+                right = slotRegions.Count > 1 ? slotRegions[1] : null,
+                balls = eqBalls,
                 equalsBall = equalsNode.expr.sourceBalls.Count > 0
                     ? equalsNode.expr.sourceBalls[0] : null,
                 slots = slotRegions,
                 slotBalls = slotBalls,
                 ambiguousBalls = liveAmbiguous,
-                expression = slotRegions.Count > 0 ? Render(slotRegions[0]) + "=" : "=",
-                equationState = 0,   // blue
+                expression = RenderSlots(slotRegions),
+                equationState = 0,
             };
-            equation = blueEq;
-            return true;
+            equations.Add(eq);
         }
 
-        // 2+ slots: compare, optionally fill an empty ball.
-        var emptyBalls = new List<BallNumber>();
-        foreach (var bl in slotBalls)
-            foreach (var b in bl)
-                if (b != null && string.IsNullOrEmpty(b.GetMathContent().Trim()))
-                    emptyBalls.Add(b);
+        // Centralized fill + color pass across every '=' in this cluster.
+        FillAndColorCluster(equations, filledBalls);
 
-        byte state;
-        bool solved = EvaluateEquals(slotRegions, emptyBalls, out state);
-
-        var eq = new ConnectedEquation
-        {
-            left = slotRegions[0],
-            right = slotRegions.Count > 1 ? slotRegions[1] : null,
-            balls = cluster,
-            equalsBall = equalsNode.expr.sourceBalls.Count > 0
-                ? equalsNode.expr.sourceBalls[0] : null,
-            slots = slotRegions,
-            slotBalls = slotBalls,
-            ambiguousBalls = liveAmbiguous,
-            expression = RenderSlots(slotRegions),
-            equationState = state,
-        };
-
-        equation = eq;
         return true;
+    }
+
+        /// <summary>
+    /// Cluster-wide fill + color pass. Runs once after every '=' in the
+    /// cluster has a fully built slot list.
+    ///
+    /// Fill:
+    ///   - A '=' proposes a value for a blank only when exactly one of its
+    ///     slots is a bare UnknownNode (single blank ball, nothing else) and
+    ///     every other slot evaluates numerically to the same value.
+    ///   - A blank is filled iff every '=' that touches it proposes the same
+    ///     value. If any '=' touching it proposes a different value, or none
+    ///     propose, the blank stays empty.
+    ///
+    /// Color:
+    ///   - After fills are applied, each '=' re-checks its slots. All numeric
+    ///     and equal → green. Any two disagree → red. Any unresolved slot
+    ///     (blank, variable, unsolvable region) → blue.
+    /// </summary>
+    private static void FillAndColorCluster(
+        List<ConnectedEquation> eqs, HashSet<BallNumber> filledBalls)
+    {
+        // --- A. Collect proposals per blank ball ---
+        // Key: the blank ball. Value: set of numeric values proposed for it.
+        var proposals = new Dictionary<BallNumber, HashSet<double>>();
+        // Also track which (eqIndex, slotIndex) slots propose a fill, so we
+        // can patch them on fill.
+        var slotProposals = new List<(int eqIndex, int slotIndex, BallNumber blank, double value)>();
+
+        for (int ei = 0; ei < eqs.Count; ei++)
+        {
+            var eq = eqs[ei];
+            if (eq.slots.Count < 2) continue;
+
+            int blankSlotIndex = -1;
+            BallNumber blankBall = null;
+            bool multipleBlanksInSlot = false;
+            bool otherSlotNonNumeric = false;
+            double? commonValue = null;
+
+            for (int si = 0; si < eq.slots.Count; si++)
+            {
+                var slot = eq.slots[si];
+
+                if (IsBareBlankSlot(slot, eq.slotBalls[si], out BallNumber bb))
+                {
+                    if (blankSlotIndex >= 0)
+                    {
+                        // More than one bare-blank slot → cannot fill.
+                        multipleBlanksInSlot = true;
+                        break;
+                    }
+                    blankSlotIndex = si;
+                    blankBall = bb;
+                    continue;
+                }
+
+                if (!TryEvaluateNode(slot, out double v))
+                {
+                    otherSlotNonNumeric = true;
+                    break;
+                }
+
+                if (commonValue == null) commonValue = v;
+                else if (!ValuesAreEquivalent(commonValue.Value, v))
+                {
+                    // Other slots disagree among themselves — no single
+                    // value to propose.
+                    otherSlotNonNumeric = true;   // reuse flag to abort
+                    break;
+                }
+            }
+
+            if (multipleBlanksInSlot || otherSlotNonNumeric) continue;
+            if (blankSlotIndex < 0 || blankBall == null || commonValue == null) continue;
+
+            if (!proposals.TryGetValue(blankBall, out var set))
+                proposals[blankBall] = set = new HashSet<double>();
+
+            // De-duplicate on tolerance.
+            bool alreadyPresent = false;
+            foreach (double existing in set)
+                if (ValuesAreEquivalent(existing, commonValue.Value)) { alreadyPresent = true; break; }
+
+            if (!alreadyPresent) set.Add(commonValue.Value);
+
+            slotProposals.Add((ei, blankSlotIndex, blankBall, commonValue.Value));
+        }
+
+        // --- B. Fill blanks that are unanimously agreed ---
+        // Track which (eqIndex, slotIndex) were patched so we don't double-patch.
+        var patched = new HashSet<(int, int)>();
+
+        foreach (var kv in proposals)
+        {
+            BallNumber blankBall = kv.Key;
+            HashSet<double> set = kv.Value;
+            if (set.Count != 1) continue;   // contradictory or empty → don't fill
+
+            double value = 0;
+            foreach (double v in set) { value = v; break; }
+
+            blankBall.SetSolverOutput(
+                value.ToString("G", CultureInfo.InvariantCulture));
+            filledBalls.Add(blankBall);
+
+            // Patch every slot that proposed for this blank into a NumberNode.
+            var replacement = new NumberNode
+            {
+                value = value,
+                display = value.ToString("G", CultureInfo.InvariantCulture),
+            };
+            replacement.sourceBalls.Add(blankBall);
+
+            foreach (var p in slotProposals)
+            {
+                if (p.blank != blankBall) continue;
+                if (!patched.Add((p.eqIndex, p.slotIndex))) continue;
+                eqs[p.eqIndex].slots[p.slotIndex] = replacement;
+            }
+        }
+
+        // --- C. Color each '=' based on its current (post-fill) slots ---
+        foreach (var eq in eqs)
+            eq.equationState = ClassifyEquation(eq);
+    }
+
+    /// <summary>
+    /// True when the slot's ExprNode is a bare UnknownNode whose slotBalls
+    /// contains exactly one ball, and that ball is currently blank.
+    /// </summary>
+    private static bool IsBareBlankSlot(
+        ExprNode slot, List<BallNumber> slotBalls, out BallNumber blankBall)
+    {
+        blankBall = null;
+        if (!(slot is UnknownNode)) return false;
+        if (slotBalls == null || slotBalls.Count != 1) return false;
+        var b = slotBalls[0];
+        if (b == null) return false;
+        if (!string.IsNullOrEmpty(b.GetMathContent().Trim())) return false;
+        blankBall = b;
+        return true;
+    }
+
+    /// <summary>
+    /// 0 = blue (unknown/unresolved), 1 = green (all numeric and equal),
+    /// 2 = red (all numeric and not equal).
+    /// </summary>
+    private static byte ClassifyEquation(ConnectedEquation eq)
+    {
+        if (eq.slots.Count < 2) return 0;
+
+        var values = new List<double>(eq.slots.Count);
+        foreach (var slot in eq.slots)
+        {
+            if (!TryEvaluateNode(slot, out double v)) return 0;
+            values.Add(v);
+        }
+
+        for (int i = 1; i < values.Count; i++)
+            if (!ValuesAreEquivalent(values[0], values[i])) return 2;
+
+        return 1;
     }
 
     private static List<List<Node>> PartitionByEquals(
@@ -6405,7 +6622,7 @@ public static class MathEquationBuilder
             }
             if (a == null) return;
 
-                        ExprNode product = MakeProduct(a.expr, b.expr);
+            ExprNode product = MakeProduct(a.expr, b.expr, implicitMultiplication: true);
             MergeInto(nodes, new List<Node> { a, b }, product);
         }
     }
@@ -6420,59 +6637,177 @@ public static class MathEquationBuilder
 
     public static byte ReEvaluateAfterFill(ConnectedEquation eq)
     {
-        if (eq == null || string.IsNullOrEmpty(eq.expression)) return eq?.equationState ?? 0;
+        if (eq == null || eq.slots.Count < 2) return eq?.equationState ?? 0;
 
-        BallNumber solverOutput = null;
-        foreach (BallNumber ball in eq.balls)
+        // Find the ball whose value was filled in by the solver.
+        BallNumber filled = null;
+        foreach (BallNumber b in eq.balls)
         {
-            if (ball != null && ball.IsSolverOutput &&
-                !string.IsNullOrEmpty(ball.GetSolverOutputContent()))
+            if (b != null && b.IsSolverOutput &&
+                !string.IsNullOrEmpty(b.GetSolverOutputContent()))
             {
-                if (solverOutput != null) return eq.equationState;  // multiple fills: leave as-is
-                solverOutput = ball;
+                if (filled != null) return eq.equationState;   // multiple fills: leave
+                filled = b;
             }
         }
-        if (solverOutput == null) return eq.equationState;
+        if (filled == null) return eq.equationState;
 
-        string text = eq.expression;
-        char unknown = MathEquationSolver.UnknownSymbol;
-        if (text.IndexOf(unknown) < 0) return eq.equationState;
-        if (text.IndexOf(unknown) != text.LastIndexOf(unknown)) return eq.equationState;
-
-        text = text.Replace(unknown.ToString(), "(" + solverOutput.GetSolverOutputContent() + ")");
-        if (!TrySplitEqualityChain(text, out string[] parts)) return eq.equationState;
-
-        var empty = new Dictionary<char, double>();
-        if (!MathEquationSolver.TryEvaluateNumericExpression(parts[0], empty, out double first))
+        // Each slot containing the filled ball needs its UnknownNode replaced with
+        // the filled numeric value. We do this on a shallow clone of the slot so
+        // the original graph is untouched.
+        if (!double.TryParse(
+                filled.GetSolverOutputContent(),
+                System.Globalization.NumberStyles.Float,
+                System.Globalization.CultureInfo.InvariantCulture,
+                out double filledValue))
             return eq.equationState;
 
-        for (int i = 1; i < parts.Length; i++)
+        var values = new List<double>();
+        foreach (var slot in eq.slots)
         {
-            if (!MathEquationSolver.TryEvaluateNumericExpression(parts[i], empty, out double value) ||
-                !ValuesAreEquivalent(first, value))
+            var substituted = SubstituteUnknown(slot, filledValue);
+            if (!TryEvaluateNode(substituted, out double v))
                 return eq.equationState;
+            values.Add(v);
         }
-        return 1;   // green
+
+        for (int i = 1; i < values.Count; i++)
+            if (!ValuesAreEquivalent(values[0], values[i]))
+                return 2;
+
+        return 1;
+    }
+
+    /// <summary>
+    /// Returns a shallow copy of 'node' with any UnknownNode replaced by
+    /// NumberNode(filledValue). Handles the shapes the graph actually produces.
+    /// </summary>
+    private static ExprNode SubstituteUnknown(ExprNode node, double filledValue)
+    {
+        switch (node)
+        {
+            case UnknownNode _:
+                return new NumberNode
+                {
+                    value   = filledValue,
+                    display = filledValue.ToString("G",
+                        System.Globalization.CultureInfo.InvariantCulture),
+                };
+
+            case NumberNode _:
+            case VarNode _:
+                return node;
+
+            case FuncNode f when f.arg != null:
+                return new FuncNode { name = f.name, arg = SubstituteUnknown(f.arg, filledValue) };
+
+            case OpNode o when o.left != null && o.right != null:
+                return new OpNode
+                {
+                    op    = o.op,
+                    left  = SubstituteUnknown(o.left,  filledValue),
+                    right = SubstituteUnknown(o.right, filledValue),
+                };
+
+            case OpNode o when o.left != null && o.hasFixedExponent:
+                return new OpNode
+                {
+                    op               = '^',
+                    left             = SubstituteUnknown(o.left, filledValue),
+                    fixedExponent    = SubstituteUnknown(o.fixedExponent, filledValue),
+                    hasFixedExponent = true,
+                };
+
+            default:
+                return node;
+        }
     }
 
     
 
-    private static ExprNode MakeProduct(ExprNode a, ExprNode b)
+    private static ExprNode MakeProduct(ExprNode a, ExprNode b, bool implicitMultiplication = false)
     {
-        // Numeric collapse when both sides are numbers.
         if (a is NumberNode na && b is NumberNode nb)
         {
+            double v = na.value * nb.value;
             var merged = new NumberNode
             {
-                value = na.value * nb.value,
-                display = "(" + na.display + MathEquationSolver.ImplicitMultiplicationSymbol + nb.display + ")",
+                value   = v,
+                display = v.ToString("G", CultureInfo.InvariantCulture),
             };
             return merged;
         }
-        var op = new OpNode { op = '*' };
-        op.left = a;
+        var op = new OpNode { op = '*', implicitMultiplication = implicitMultiplication };
+        op.left  = a;
         op.right = b;
         return op;
+    }
+
+    private static ExprNode FoldNumeric(ExprNode a, ExprNode b, char op, string sep = null)
+    {
+        if (!(a is NumberNode na) || !(b is NumberNode nb))
+            return null;
+
+        double v;
+        switch (op)
+        {   
+            case '+': v = na.value + nb.value; break;
+            case '-': v = na.value - nb.value; break;
+            case '*': v = na.value * nb.value; break;
+            case '/':
+                if (nb.value == 0) return null;
+                v = na.value / nb.value;
+                break;
+            case '^': v = System.Math.Pow(na.value, nb.value); break;
+            default:  return null;
+        }
+
+        var n = new NumberNode
+        {
+            value   = v,
+            display = v.ToString("G", CultureInfo.InvariantCulture),
+        };
+        n.sourceBalls.AddRange(a.sourceBalls);
+        n.sourceBalls.AddRange(b.sourceBalls);
+        return n;
+    }
+
+    private static bool TryEvaluateNode(ExprNode node, out double value)
+    {
+        value = 0;
+        switch (node)
+        {
+            case NumberNode n:
+                value = n.value;
+                return true;
+
+            case OpNode o when o.left != null && o.right != null:
+                if (!TryEvaluateNode(o.left, out double l) ||
+                    !TryEvaluateNode(o.right, out double r)) return false;
+                switch (o.op)
+                {
+                    case '+': value = l + r; return true;
+                    case '-': value = l - r; return true;
+                    case '*': value = l * r; return true;
+                    case '/': if (r == 0) return false;
+                            value = l / r; return true;
+                    case '^': value = System.Math.Pow(l, r); return true;
+                }
+                return false;
+
+            case OpNode o when o.left != null && o.hasFixedExponent:
+                if (!TryEvaluateNode(o.left, out double b) ||
+                    !TryEvaluateNode(o.fixedExponent, out double e)) return false;
+                value = System.Math.Pow(b, e);
+                return true;
+
+            case FuncNode f when f.arg != null:
+                if (!TryEvaluateNode(f.arg, out double av)) return false;
+                return TryEvaluateFunction(f.name, av, out value);
+
+            default:
+                return false;
+        }
     }
 
     // ---- Step 3: functions ----
@@ -6609,12 +6944,17 @@ public static class MathEquationBuilder
                 continue;
             }
 
-            var result = new OpNode
+            var folded = FoldNumeric(argument.expr, power.fixedExponent, '^');
+            ExprNode result = folded;
+            if (result == null)
             {
-                op = '^',
-                left = argument.expr,
-                right = power.fixedExponent,
-            };
+                result = new OpNode
+                {
+                    op    = '^',
+                    left  = argument.expr,
+                    right = power.fixedExponent,
+                };
+            }
             result.sourceBalls.AddRange(power.sourceBalls);
             powerNode.expr = result;
             AbsorbInto(nodes, powerNode, new List<Node> { argument });
@@ -6641,12 +6981,14 @@ public static class MathEquationBuilder
             if (star != null)
             {
                 var neighbors = LiveNeighbors(star);
-                // Merge everything the '*' touches into a single product.
                 ExprNode acc = neighbors[0].expr;
                 for (int i = 1; i < neighbors.Count; i++)
                 {
+                    var folded = FoldNumeric(acc, neighbors[i].expr, '*');
+                    if (folded != null) { acc = folded; continue; }
+
                     var op = new OpNode { op = '*' };
-                    op.left = acc;
+                    op.left  = acc;
                     op.right = neighbors[i].expr;
                     acc = op;
                 }
@@ -6673,7 +7015,8 @@ public static class MathEquationBuilder
                     Node otherSide = n.isBracketResult ? nb : n;
                     if (!IsAdjacencyLeaf(otherSide.expr)) continue;
 
-                    ExprNode combined = MakeProduct(n.expr, nb.expr);
+                    ExprNode combined = FoldNumeric(n.expr, nb.expr, '*', "")
+                    ?? MakeProduct(n.expr, nb.expr, implicitMultiplication: true);
                     combined.sourceBalls.AddRange(n.expr.sourceBalls);
                     combined.sourceBalls.AddRange(nb.expr.sourceBalls);
                     var mergedNode = MergeInto(nodes, new List<Node> { n, nb }, combined);
@@ -6729,8 +7072,11 @@ public static class MathEquationBuilder
                 ExprNode acc = neighbors[0].expr;
                 for (int i = 1; i < neighbors.Count; i++)
                 {
+                    var folded = FoldNumeric(acc, neighbors[i].expr, '+');
+                    if (folded != null) { acc = folded; continue; }
+
                     var op = new OpNode { op = '+' };
-                    op.left = acc;
+                    op.left  = acc;
                     op.right = neighbors[i].expr;
                     acc = op;
                 }
@@ -6757,38 +7103,53 @@ public static class MathEquationBuilder
         }
     }
 
-    private static void ApplyDirectionalOperators(
-    List<Node> nodes, char operation, HashSet<BallNumber> ambiguous)
+        private static void ApplyDirectionalOperators(
+        List<Node> nodes, char operation, HashSet<BallNumber> ambiguous)
     {
+        // Shared-input rule: two+ same-type triangles competing for the same
+        // input operand are ambiguous. Red them before any chain work.
+        MarkSharedInputTriangles(nodes, operation, ambiguous);
+
+        // ---- Chain-aware binding ----
+        // Repeatedly find a chain-start (a triangle whose outside/input
+        // operand is not produced by another unbound triangle of the same
+        // type), bind it, and loop. A chain-start always exists for any
+        // acyclic chain; if none can be found, we have a circular chain and
+        // the region collapses to leftover nodes → red via fallback.
         while (true)
         {
-            Node operatorNode = null;
-            foreach (Node node in nodes)
-            {
-                if (!node.alive || !(node.expr is OpNode op) ||
-                    op.op != operation || op.directionalOperator == null ||
-                    op.left != null || op.right != null)
-                    continue;
+            var triangles = CollectUnboundTriangles(nodes, operation);
+            if (triangles.Count == 0) return;
 
-                operatorNode = node;
-                break;
+            Node chainStart = FindChainStart(triangles);
+            if (chainStart == null)
+            {
+                // Circular or otherwise unorderable chain — red every
+                // remaining triangle of this type.
+                foreach (Node t in triangles)
+                {
+                    foreach (BallNumber ball in t.expr.sourceBalls)
+                        if (ball != null) ambiguous.Add(ball);
+                    t.alive = false;
+                }
+                return;
             }
 
-            if (operatorNode == null) return;
-
-            var opExpr = (OpNode)operatorNode.expr;
+            // ---- Bind this chain-start exactly the way the old loop did ----
+            var opExpr = (OpNode)chainStart.expr;
             Node outsideOperand = null;
             Node insideOperand  = null;
             bool invalidNeighbor = false;
             bool adjacentCrescent = false;
 
-            foreach (Node neighbor in LiveNeighbors(operatorNode))
+            foreach (Node neighbor in LiveNeighbors(chainStart))
             {
+                if (neighbor.expr is EqualsMarker) continue;
+
                 if (neighbor.expr is OpNode nbOp &&
                     nbOp.directionalOperator != null &&
                     nbOp.left == null && nbOp.right == null)
                 {
-                    // Two crescents touching: both go red, stop trying to bind.
                     adjacentCrescent = true;
                     continue;
                 }
@@ -6802,33 +7163,64 @@ public static class MathEquationBuilder
                     continue;
                 }
 
-                Collider2D operandCollider =
-                    neighbor.expr.sourceBalls[0].GetComponent<Collider2D>();
-                if (operandCollider == null)
+                bool anyInside  = false;
+                bool anyOutside = false;
+                bool anyInRange = false;
+
+                foreach (BallNumber ball in neighbor.expr.sourceBalls)
                 {
-                    invalidNeighbor = true;
-                    continue;
+                    if (ball == null) continue;
+                    Collider2D collider = ball.GetComponent<Collider2D>();
+                    if (collider == null) continue;
+
+                    Vector2 center = collider.bounds.center;
+                    float radius = Mathf.Max(
+                        collider.bounds.extents.x,
+                        collider.bounds.extents.y);
+
+                    if (!opExpr.directionalOperator.TryGetOperandSide(
+                            center, radius, out bool isInside))
+                        continue;
+
+                    anyInRange = true;
+                    if (isInside) anyInside = true;
+                    else          anyOutside = true;
                 }
 
-                float operandRadius = Mathf.Max(
-                    operandCollider.bounds.extents.x,
-                    operandCollider.bounds.extents.y);
-                if (!opExpr.directionalOperator.TryGetOperandSide(
-                        neighbor.position, operandRadius, out bool isInside))
-                {
-                    invalidNeighbor = true;
-                    continue;
-                }
+                if (!anyInRange) continue;
+                if (anyInside && anyOutside) { invalidNeighbor = true; continue; }
 
-                if (isInside)
+                                if (operation == '^')
                 {
-                    if (insideOperand != null) invalidNeighbor = true;
-                    insideOperand = neighbor;
+                    // For power triangles, tip side (isInside) is the BASE
+                    // (left operand of base^exp). Flat side (outside) is the
+                    // EXPONENT (right operand). We store them as
+                    // outsideOperand = base, insideOperand = exponent so the
+                    // rest of the method (result construction, AbsorbInto)
+                    // works unchanged.
+                    if (anyInside)
+                    {
+                        if (outsideOperand != null) invalidNeighbor = true;
+                        outsideOperand = neighbor;   // tip side = base
+                    }
+                    else
+                    {
+                        if (insideOperand != null) invalidNeighbor = true;
+                        insideOperand = neighbor;    // flat side = exponent
+                    }
                 }
                 else
                 {
-                    if (outsideOperand != null) invalidNeighbor = true;
-                    outsideOperand = neighbor;
+                    if (anyInside)
+                    {
+                        if (insideOperand != null) invalidNeighbor = true;
+                        insideOperand = neighbor;
+                    }
+                    else
+                    {
+                        if (outsideOperand != null) invalidNeighbor = true;
+                        outsideOperand = neighbor;
+                    }
                 }
             }
 
@@ -6836,22 +7228,242 @@ public static class MathEquationBuilder
                 outsideOperand == null || insideOperand == null)
             {
                 foreach (BallNumber ball in opExpr.sourceBalls)
-                    ambiguous.Add(ball);
-                operatorNode.alive = false;
+                    if (ball != null) ambiguous.Add(ball);
+                chainStart.alive = false;
                 continue;
             }
 
-            var result = new OpNode
+            var folded = FoldNumeric(outsideOperand.expr, insideOperand.expr, operation);
+            ExprNode result = folded;
+            if (result == null)
             {
-                op                = operation,
-                left              = outsideOperand.expr,
-                right             = insideOperand.expr,
-                directionalOperator = opExpr.directionalOperator,
-            };
+                result = new OpNode
+                {
+                    op                  = operation,
+                    left                = outsideOperand.expr,
+                    right               = insideOperand.expr,
+                    directionalOperator = opExpr.directionalOperator,
+                };
+            }
             result.sourceBalls.AddRange(opExpr.sourceBalls);
-            operatorNode.expr = result;
-            AbsorbInto(nodes, operatorNode, new List<Node> { outsideOperand, insideOperand });
+            chainStart.expr = result;
+            AbsorbInto(nodes, chainStart, new List<Node> { outsideOperand, insideOperand });
         }
+    }
+
+        /// <summary>
+    /// Every live, unbound triangle of the given operator type.
+    /// </summary>
+    private static List<Node> CollectUnboundTriangles(List<Node> nodes, char operation)
+    {
+        var result = new List<Node>();
+        foreach (Node n in nodes)
+        {
+            if (!n.alive) continue;
+            if (!(n.expr is OpNode op)) continue;
+            if (op.directionalOperator == null) continue;
+            if (op.op != operation) continue;
+            if (op.left != null || op.right != null) continue;   // already bound
+            result.Add(n);
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// A chain-start is a triangle whose input (outside/flat-side) operand is
+    /// NOT the output (inside/tip-side) operand of another unbound triangle of
+    /// the same type. Returns null if no chain-start exists (circular chain).
+    /// </summary>
+    private static Node FindChainStart(List<Node> triangles)
+    {
+        if (triangles.Count == 0) return null;
+        if (triangles.Count == 1) return triangles[0];
+
+        // For each triangle, figure out which of its live neighbors is its
+        // input (outside cone). If none of those is the inside operand of
+        // another triangle, it's a start.
+        foreach (Node t in triangles)
+        {
+            var opExpr = (OpNode)t.expr;
+            Node inputNeighbor = FindSingleOperand(t, opExpr, wantInside: false);
+            if (inputNeighbor == null) continue;   // can't classify; skip
+
+            bool consumedByAnother = false;
+            foreach (Node other in triangles)
+            {
+                if (other == t) continue;
+
+                Node otherOutput = FindSingleOperand(
+                    other, (OpNode)other.expr, wantInside: true);
+
+                if (otherOutput == inputNeighbor)
+                {
+                    consumedByAnother = true;
+                    break;
+                }
+            }
+
+            if (!consumedByAnother) return t;
+        }
+
+        return null;
+    }
+
+    /// <summary>
+    /// Locates the single live neighbor of 't' that is on 't's inside
+    /// (tip) or outside (flat) side. Returns null if zero or multiple
+    /// matches — the triangle can't be classified as start or non-start.
+    /// </summary>
+    private static Node FindSingleOperand(Node t, OpNode opExpr, bool wantInside)
+    {
+        Node found = null;
+        foreach (Node neighbor in LiveNeighbors(t))
+        {
+            if (neighbor.expr is EqualsMarker) continue;
+
+            if (neighbor.expr is OpNode nbOp &&
+                nbOp.directionalOperator != null &&
+                nbOp.left == null && nbOp.right == null)
+                continue;   // adjacent crescent, not an operand
+
+            if (IsPendingOperator(neighbor.expr)) continue;
+            if (neighbor.expr.sourceBalls.Count == 0) continue;
+
+            bool matches = false;
+            foreach (BallNumber ball in neighbor.expr.sourceBalls)
+            {
+                if (ball == null) continue;
+                Collider2D collider = ball.GetComponent<Collider2D>();
+                if (collider == null) continue;
+
+                Vector2 center = collider.bounds.center;
+                float radius = Mathf.Max(
+                    collider.bounds.extents.x,
+                    collider.bounds.extents.y);
+
+                if (!opExpr.directionalOperator.TryGetOperandSide(
+                        center, radius, out bool isInside))
+                    continue;
+
+                if (isInside == wantInside) { matches = true; break; }
+            }
+
+            if (matches)
+            {
+                if (found != null) return null;   // multiple matches → ambiguous
+                found = neighbor;
+            }
+        }
+        return found;
+    }
+
+        /// <summary>
+    /// Detects a shared input operand among same-type directional operators
+    /// and flags them red.
+    ///
+    /// A node N is a shared input when two or more live triangles with
+    /// op == operation each have N in their outside (input) cone. Those
+    /// triangles cannot all consume N as their input, so the whole cluster
+    /// is ambiguous. We mark N and the competing triangles as ambiguous and
+    /// kill their nodes so the rest of the rewrite skips them.
+    ///
+    /// Runs once per ApplyDirectionalOperators call, so:
+    ///   - it fires on raw single-ball inputs (first call of each op type), and
+    ///   - it fires again after any earlier fold that produced a shared input
+    ///     group (later call of the same op type, or later op type in the
+    ///     precedence chain).
+    ///
+    /// Same-output sharing (2 -> 3 <- 4) and chains (2 -> 3 -> 4) never fire:
+    /// they are captured as either shared inside operands or output→input,
+    /// neither of which matches this check.
+    /// </summary>
+    private static void MarkSharedInputTriangles(
+        List<Node> nodes, char operation, HashSet<BallNumber> ambiguous)
+    {
+        // Collect the live triangle nodes of this exact operator type.
+        var triangles = new List<Node>();
+        foreach (Node n in nodes)
+        {
+            if (!n.alive) continue;
+            if (!(n.expr is OpNode op)) continue;
+            if (op.directionalOperator == null) continue;
+            if (op.op != operation) continue;
+            if (op.left != null || op.right != null) continue;   // already bound
+            triangles.Add(n);
+        }
+        if (triangles.Count < 2) return;
+
+        // For each live non-triangle node that has operands, count how many of
+        // these triangles treat it as their input (outside cone). If ≥2, mark.
+        var toKill = new HashSet<Node>();
+
+        foreach (Node candidate in nodes)
+        {
+            if (!candidate.alive) continue;
+            if (toKill.Contains(candidate)) continue;
+
+            // Skip candidates that are themselves pending triangles of this type.
+            if (candidate.expr is OpNode co &&
+                co.directionalOperator != null &&
+                co.op == operation &&
+                co.left == null && co.right == null)
+                continue;
+
+            // Skip nodes with no source balls — nothing geometric to test.
+            if (candidate.expr.sourceBalls.Count == 0) continue;
+
+            var consumers = new List<Node>();
+            foreach (Node t in triangles)
+            {
+                if (t == candidate) continue;
+                if (!t.alive) continue;
+
+                bool seesAsInput = false;
+                foreach (BallNumber ball in candidate.expr.sourceBalls)
+                {
+                    if (ball == null) continue;
+                    Collider2D collider = ball.GetComponent<Collider2D>();
+                    if (collider == null) continue;
+
+                    Vector2 center = collider.bounds.center;
+                    float radius = Mathf.Max(
+                        collider.bounds.extents.x,
+                        collider.bounds.extents.y);
+
+                    if (!((OpNode)t.expr).directionalOperator.TryGetOperandSide(
+                            center, radius, out bool isInside))
+                        continue;
+
+                    if (!isInside)
+                    {
+                        seesAsInput = true;
+                        break;
+                    }
+                }
+
+                if (seesAsInput) consumers.Add(t);
+            }
+
+            if (consumers.Count >= 2)
+            {
+                // Flag the shared input node's balls.
+                foreach (BallNumber ball in candidate.expr.sourceBalls)
+                    if (ball != null) ambiguous.Add(ball);
+
+                // Flag every competing triangle's balls.
+                foreach (Node t in consumers)
+                {
+                    foreach (BallNumber ball in t.expr.sourceBalls)
+                        if (ball != null) ambiguous.Add(ball);
+                    toKill.Add(t);
+                }
+
+                toKill.Add(candidate);
+            }
+        }
+
+        foreach (Node n in toKill)
+            n.alive = false;
     }
 
     private static bool IsPendingOperator(ExprNode expression)
@@ -6862,28 +7474,19 @@ public static class MathEquationBuilder
     // ---- Step 7: equals evaluation ----
 
     private static bool EvaluateEquals(
-        List<ExprNode> slots,
-        List<BallNumber> emptyBalls,
-        out byte state)
+    List<ExprNode> slots,
+    List<BallNumber> emptyBalls,
+    out byte state)
     {
-        state = 2;   // default red
+        state = 2;
         if (slots == null || slots.Count < 2) { state = 0; return false; }
 
-        // Try numeric evaluation of each slot.
-        var empty = new Dictionary<char, double>();
         var values = new List<double>();
         foreach (var slot in slots)
         {
-            string expr = Render(slot);
-            if (!MathEquationSolver.TryEvaluateNumericExpression(expr, empty, out double v))
+            if (!TryEvaluateNode(slot, out double v))
             {
-                // Not numerically evaluable. Could be symbolic or empty.
-                if (emptyBalls.Count == 1)
-                {
-                    // Single empty ball: leave blue until solver fills it.
-                    state = 0;
-                    return false;
-                }
+                if (emptyBalls.Count == 1) { state = 0; return false; }
                 state = 2;
                 return false;
             }
@@ -7312,12 +7915,11 @@ public static class MathEquationBuilder
 
     private static string RenderOp(OpNode o)
     {
-        string left = Render(o.left);
+        string left  = Render(o.left);
         string right = Render(o.right);
-        string inner = left + o.op + right;
+        string sep   = o.implicitMultiplication ? "" : o.op.ToString();
 
-        // Wrap non-trivial children in parens so re-parsing preserves shape.
-        return "(" + inner + ")";
+        return "(" + left + sep + right + ")";
     }
 
     private static string RenderFunc(FuncNode f)
@@ -7554,7 +8156,8 @@ public static class MathEquationBuilder
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\MathEquationSolver.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\MathEquationSolver.cs =====
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8638,7 +9241,8 @@ public static class MathEquationSolver
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\MathExpression.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\MathExpression.cs =====
+
 // Categories used to select a ball's color and detect invalid-looking content.
 public enum MathContentKind
 {
@@ -8797,7 +9401,8 @@ public static class MathExpression
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\MathSimplifier.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\MathSimplifier.cs =====
+
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
@@ -9005,7 +9610,8 @@ public static class MathSimplifier
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\MathSyntax.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\MathSyntax.cs =====
+
 // Shared character tests and syntax validation for mathematical input text.
 public static class MathSyntax
 {
@@ -9150,7 +9756,8 @@ public static class MathSyntax
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\NetworkBall.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\NetworkBall.cs =====
+
 using System.IO;
 using Unity.Netcode;
 using UnityEngine;
@@ -9551,7 +10158,8 @@ public class NetworkBall : NetworkBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\NetworkBallManager.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\NetworkBallManager.cs =====
+
 using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
@@ -9882,7 +10490,8 @@ public class NetworkBallManager : NetworkBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\NetworkGameSession.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\NetworkGameSession.cs =====
+
 using System;
 using System.Threading.Tasks;
 using Unity.Netcode;
@@ -10005,7 +10614,8 @@ public class NetworkGameSession : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\NetworkLobbyUI.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\NetworkLobbyUI.cs =====
+
 using System.Threading.Tasks;
 using Unity.Netcode;
 using UnityEngine;
@@ -10180,7 +10790,8 @@ public class NetworkLobbyUI : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\PlayerData.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\PlayerData.cs =====
+
 using Unity.Collections;
 using Unity.Netcode;
 using UnityEngine;
@@ -10200,7 +10811,8 @@ public class PlayerData : NetworkBehaviour
     public bool HasSetName => PlayerName.Value.Length > 0;
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\PlayerManger.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\PlayerManger.cs =====
+
 using System.Collections.Generic;
 using Unity.Collections;
 using Unity.Netcode;
@@ -10365,7 +10977,8 @@ public class PlayerManager : NetworkBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\PlayerNamePrompt.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\PlayerNamePrompt.cs =====
+
 using System;
 using UnityEngine;
 
@@ -10476,7 +11089,8 @@ public class PlayerNamePrompt : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\PlayerNameSubmitter.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\PlayerNameSubmitter.cs =====
+
 using Unity.Netcode;
 using UnityEngine;
 
@@ -10548,7 +11162,8 @@ public class PlayerNameSubmitter : NetworkBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\RandomBallSummoner.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\RandomBallSummoner.cs =====
+
 using UnityEngine;
 
 public class RandomBallSummoner : MonoBehaviour
@@ -10719,7 +11334,8 @@ public class RandomBallSummoner : MonoBehaviour
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\ResetBagButton.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\ResetBagButton.cs =====
+
 using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10743,7 +11359,8 @@ public class ResetBagButton : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\RewriteEquationBuilder.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\RewriteEquationBuilder.cs =====
+
 using UnityEngine;
 
 public class NewMonoBehaviourScript : MonoBehaviour
@@ -10762,7 +11379,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\SelectionInputRouter.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\SelectionInputRouter.cs =====
+
 using UnityEngine;
 
 public class SelectionInputRouter : MonoBehaviour
@@ -10862,7 +11480,8 @@ public class SelectionInputRouter : MonoBehaviour
     }
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\Spawner.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\Spawner.cs =====
+
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11372,6 +11991,7 @@ private void SpawnBallAt(Vector3 position, string initialContent = null, float r
             aggregate.equations.AddRange(c.result.equations);
             aggregate.allAmbiguousBalls.UnionWith(c.result.allAmbiguousBalls);
             aggregate.connectedPairs.AddRange(c.result.connectedPairs);
+            aggregate.filledBalls.UnionWith(c.result.filledBalls);
         }
 
         var definitions = MathEquationBuilder.BuildVariableDefinitions(aggregate.equations);
@@ -11385,34 +12005,20 @@ private void SpawnBallAt(Vector3 position, string initialContent = null, float r
             }
         foreach (var b in aggregate.allAmbiguousBalls) b.SetAmbiguousOperand(true);
 
-        var updated = new HashSet<BallNumber>();
-
-                    foreach (var eq in aggregate.equations)
-        {
-            Debug.Log($"[Solve] expr='{eq.expression}' state={eq.equationState} " +
-                      $"slots={eq.slots.Count} slotBalls={eq.slotBalls.Count} " +
-                      $"ambiguous={eq.ambiguousBalls.Count} balls={eq.balls.Count} " +
-                      $"emptyBalls={CountEmpty(eq)}");
-            MathEquationBuilder.TrySolveEquation(eq, definitions, updated);
-        }
-
+                // Fills already happened inside TryBuildConnectedEquation via
+        // FillAndColorCluster; aggregate.filledBalls lists every ball whose
+        // solver output was written this pass. Clear stale solver outputs for
+        // every other ball in the cluster.
         foreach (var c in clusters)
             foreach (var b in c.balls)
-                if (b != null && b.IsSolverOutput && !b.IsLocked && !updated.Contains(b))
+                if (b != null && b.IsSolverOutput && !b.IsLocked &&
+                    !aggregate.filledBalls.Contains(b))
                     b.ClearSolverOutput();
 
-                foreach (var eq in aggregate.equations)
+        foreach (var eq in aggregate.equations)
         {
             foreach (var b in eq.ambiguousBalls) b.SetAmbiguousOperand(true);
-
-            // If a blank was just filled by TrySolveEquation, the pre-fill
-            // state may be stale (blue/red even though the equation now holds).
-            // Re-evaluate against the filled value.
-            byte state = eq.equationState;
-            if (state != 1)
-                state = MathEquationBuilder.ReEvaluateAfterFill(eq);
-
-            eq.equalsBall?.SetEquationState(state);
+            eq.equalsBall?.SetEquationState(eq.equationState);
         }
 
         if (context == "board" && equationListDisplay != null)
@@ -11432,13 +12038,6 @@ private void SpawnBallAt(Vector3 position, string initialContent = null, float r
         return aggregate;
     }
 
-              private static int CountEmpty(MathEquationBuilder.ConnectedEquation eq)
-    {
-        int n = 0;
-        foreach (var b in eq.balls)
-            if (b != null && string.IsNullOrEmpty(b.GetMathContent().Trim())) n++;
-        return n;
-    }
 
     // ============================================================
     // Tendrils (per-context pools)
@@ -11802,7 +12401,8 @@ private void SpawnBallAt(Vector3 position, string initialContent = null, float r
 
 }
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\TestManuUI.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\TestManuUI.cs =====
+
 using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
@@ -12203,7 +12803,8 @@ private void CopySelectedFormation()
 }
 
 
-// ===== FILE: C:\Users\manue\MatheMOnster\Assets\scripts\TestSpawner.cs =====
+===== C:\Users\manue\MatheMOnster\Assets\scripts\TestSpawner.cs =====
+
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12815,5 +13416,4 @@ public class TestSpawner : MonoBehaviour
         return placements;
     }
 }
-
 

@@ -34,48 +34,52 @@ MonoBehaviour:
   - content: 10
     count: 1
   - content: -1
-    count: 5
-  - content: -2
-    count: 3
-  - content: -3
     count: 2
+  - content: -2
+    count: 1
+  - content: -3
+    count: 1
   - content: -4
-    count: 1
+    count: 0
   - content: -5
-    count: 1
+    count: 0
   - content: -6
     count: 1
   - content: -7
     count: 0
   - content: -8
-    count: 1
+    count: 0
   - content: -9
     count: 0
   - content: -10
     count: 0
   - content: +
-    count: 20
-  - content: '*'
-    count: 15
-  - content: /
-    count: 2
-  - content: /3
-    count: 1
-  - content: /4
-    count: 1
-  - content: /5
-    count: 1
-  - content: /6
-    count: 1
-  - content: ^
-    count: 3
-  - content: ^3
-    count: 2
-  - content: ^4
-    count: 1
-  - content: =
+    count: 8
+  - content: '-'
     count: 6
+  - content: '*'
+    count: 2
+  - content: /
+    count: 4
+  - content: /2
+    count: 2
+  - content: /4
+    count: 0
+  - content: /5
+    count: 0
+  - content: /6
+    count: 0
+  - content: ^
+    count: 2
+  - content: ^2
+    count: 1
+  - content: ^3
+    count: 1
+  - content: ^4
+    count: 0
+  - content: =
+    count: 12
   - content: x
-    count: 1
+    count: 0
   - content: y
-    count: 1
+    count: 0

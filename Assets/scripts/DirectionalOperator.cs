@@ -20,14 +20,16 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public sealed class DirectionalOperator : MonoBehaviour
 {
-    [Header("Cone tolerances")]
     [Tooltip("Half-angle (degrees) of the input cone (flat side).")]
+    [Range(0f, 180f)]
     [SerializeField] private float inputConeHalfAngle = 75f;
 
     [Tooltip("Half-angle (degrees) of the output cone (tip side).")]
+    [Range(0f, 180f)]
     [SerializeField] private float outputConeHalfAngle = 75f;
 
     [Tooltip("Extra reach beyond the operand's own radius.")]
+    [Range(0f, 1f)]
     [SerializeField] private float capturePadding = 0.10f;
 
     private BallNumber        ball;
@@ -52,18 +54,51 @@ public sealed class DirectionalOperator : MonoBehaviour
     private SpriteRenderer outputPortMarker;
     private static Sprite _dotSprite;
 
+        [Range(0f, 1440f)]
     [SerializeField] private float tipTurnSpeedDegPerSec = 720f;
+
     private float smoothedTipAngle;
 
-    [Header("Rotate-drag (grab point leads)")]
-    [Tooltip("Max turn speed (deg/sec) when aligning the grab point to the mouse movement direction.")]
-    [SerializeField] private float grabTurnSpeedDegPerSec = 360f;
+                [Header("Rotate-drag (grab point leads)")]
+ [Tooltip("If true, the grabbed point stays glued to the cursor (position is " +
+             "pinned each frame from the rotation). If false, the triangle moves by " +
+             "raw mouse delta and can drift relative to the cursor while rotating.")]
+    [SerializeField] private bool pinGrabPointToCursor = true;
 
-    private Vector2 _grabLocal;
+        [Tooltip("Width of the fade-in band below which mouse speed is damped. " +
+             "At 0 the multiplier is deadZoneFadeMin; at this speed it's 1.")]
+    [Range(0f, 200f)]
+    [SerializeField] private float grabDeadZoneSpeed = 10f;
+
+    [Tooltip("How much the fade-in band reduces turn rate at speed 0. " +
+             "0 = fully fades to zero (old behavior), 1 = no damping. " +
+             "Values between scale the rate linearly across the band.")]
+    [Range(0f, 1f)]
+    [SerializeField] private float deadZoneFadeMin = 0.4f;
+
+    [Tooltip("Unused legacy field. Kept only so existing prefab data doesn't shift.")]
+    [Range(0.1f, 20f)]
+    [SerializeField] private float grabMinFollowRate = 1.5f;
+
+    [Tooltip("Follow rate at the high end (1/sec). Higher = snappier tracking on fast drags.")]
+    [Range(5f, 200f)]
+    [SerializeField] private float grabMaxFollowRate = 30f;
+
+    [Tooltip("Mouse speed (world units/sec) at which the follow rate reaches its maximum. " +
+             "Lower = ramps up faster.")]
+    [Range(1f, 1000f)]
+    [SerializeField] private float grabMidpointMouseSpeed = 250f;
+
+        private Vector2 _grabLocal;
     private bool    _hasGrabLocal;
     private float   _grabLocalAngleDeg;
 
+    private Vector2 _dragAccum;
+    private float   _dragAccumAge;
+    private const float DragAccumWindow = 0.08f;
+
     public bool IsActive { get; private set; }
+        public bool PinGrabPointToCursor => pinGrabPointToCursor;
 
     public Vector2 TipDirection =>
         new(Mathf.Cos(currentTipAngle * Mathf.Deg2Rad),
@@ -89,8 +124,11 @@ public sealed class DirectionalOperator : MonoBehaviour
 
         CreatePortMarkers();
 
-        if (polygonCollider != null)
+                if (polygonCollider != null)
             polygonCollider.enabled = false;
+
+        if (GetComponent<RotationWatcher>() == null)
+            gameObject.AddComponent<RotationWatcher>();
 
         initialized = true;
     }
@@ -227,11 +265,14 @@ public sealed class DirectionalOperator : MonoBehaviour
         MathEquationBuilder.MarkConnectionsChanged();
     }
 
-    public void SetTipDirection(Vector2 worldDirection)
+        public void SetTipDirection(Vector2 worldDirection)
     {
         if (!IsActive) return;
         if (worldDirection.sqrMagnitude < 1e-6f) return;
 
+        Debug.LogWarning($"[TIP] SetTipDirection on {name} dir={worldDirection}");
+
+        // The triangle's visual tip lies along local +Y. A rotation of θ
         // The triangle's visual tip lies along local +Y. A rotation of θ
         // maps local +Y to (-sin θ, cos θ), so we solve for the target
         // angle that makes that point along worldDirection.
@@ -245,40 +286,47 @@ public sealed class DirectionalOperator : MonoBehaviour
         else
             smoothedTipAngle += Mathf.Sign(delta) * maxStep;
 
-        smoothedTipAngle = Mathf.Repeat(smoothedTipAngle + 180f, 360f) - 180f;
+                smoothedTipAngle = Mathf.Repeat(smoothedTipAngle + 180f, 360f) - 180f;
         currentTipAngle  = smoothedTipAngle;
 
+        GetComponent<RotationWatcher>()?.NoteSource("SetTipDirection");
         if (body != null) body.MoveRotation(currentTipAngle);
         else              transform.rotation = Quaternion.Euler(0f, 0f, currentTipAngle);
     }
 
-    public void BeginDrag()
+        public void BeginDrag()
     {
         if (!IsActive || body == null || isBeingDragged) return;
 
         isBeingDragged  = true;
-        body.freezeRotation = false;   // allow rotation during drag
+        body.freezeRotation = false;
         body.linearVelocity  = Vector2.zero;
         body.angularVelocity = 0f;
+
+        Debug.Log($"[BEGIN] freezeRotation={body.freezeRotation} type={body.bodyType} constraints={body.constraints}");
     }
 
-    public void EndDrag()
+        public void EndDrag()
     {
         if (!isBeingDragged || body == null) return;
 
         isBeingDragged = false;
-        body.freezeRotation = IsActive || originalFreezeRotation;   // restore
+        body.freezeRotation = IsActive || originalFreezeRotation;
         body.linearVelocity  = Vector2.zero;
         body.angularVelocity = 0f;
         MathEquationBuilder.MarkConnectionsChanged();
+
+        Debug.Log($"[END] freezeRotation={body.freezeRotation}");
     }
 
-   public void BeginRotateDrag(Vector2 grabWorldPos)
+      public void BeginRotateDrag(Vector2 grabWorldPos)
     {
         if (!IsActive) return;
 
         _grabLocal    = transform.InverseTransformPoint(grabWorldPos);
         _hasGrabLocal = true;
+        _dragAccum    = Vector2.zero;
+        _dragAccumAge = 0f;
 
         if (_grabLocal.sqrMagnitude < 1e-6f)
         {
@@ -290,46 +338,81 @@ public sealed class DirectionalOperator : MonoBehaviour
         _grabLocalAngleDeg = Mathf.Atan2(_grabLocal.y, _grabLocal.x) * Mathf.Rad2Deg;
     }
 
-    public void EndRotateDrag()
+        public void EndRotateDrag()
     {
         _hasGrabLocal = false;
+        _dragAccum    = Vector2.zero;
+        _dragAccumAge = 0f;
     }
 
-    /// <summary>
-    /// Aligns the grab point with the mouse movement direction. The grabbed
-    /// corner leads; the rest of the triangle trails behind. Eased at
-    /// grabTurnSpeedDegPerSec so it doesn't snap on sudden direction changes.
-    /// </summary>
-    public void ApplyRotateDrag(Vector2 mouseWorldDelta)
+         public void ApplyRotateDrag(Vector2 mouseWorldDelta)
     {
         if (!IsActive || !_hasGrabLocal) return;
-        if (_grabLocal.sqrMagnitude < 1e-6f) return;      // grabbed center: no leading corner
-        if (mouseWorldDelta.sqrMagnitude < 1e-8f) return; // no motion: hold current angle
+        if (_grabLocal.sqrMagnitude < 1e-6f) return;
 
-        // Angle of mouse motion in world space.
-        float moveAngleDeg = Mathf.Atan2(mouseWorldDelta.y, mouseWorldDelta.x) * Mathf.Rad2Deg;
+        // Accumulate over a short window so the *direction* is stable.
+        _dragAccum    += mouseWorldDelta;
+        _dragAccumAge += Time.deltaTime;
+        if (_dragAccumAge < DragAccumWindow) return;
 
-        // Target triangle rotation so the grab point points along the motion.
+        Vector2 dirDelta = _dragAccum;
+        float   dt       = Mathf.Max(_dragAccumAge, 1e-5f);
+        _dragAccum    = Vector2.zero;
+        _dragAccumAge = 0f;
+
+                float mouseSpeed = dirDelta.magnitude / dt;
+
+        // Compute the "normal" rate this speed would get from the main curve.
+        // Above the band, this is what we use directly. Below the band, we
+        // scale it down linearly toward zero so slow motion fades in smoothly
+        // instead of hitting a hard cutoff.
+        float speedFactor = Mathf.InverseLerp(0f, grabMidpointMouseSpeed, mouseSpeed);
+
+        // Mostly linear with a slight quadratic bump: rate = x + 0.1x².
+        // Clamp01 keeps the top pinned at max (x=1 gives 1.1 unclamped).
+        float easedFactor = speedFactor + 0.1f * speedFactor * speedFactor;
+        easedFactor = Mathf.Clamp01(easedFactor);
+
+        float normalRate = Mathf.Lerp(0f, grabMaxFollowRate, easedFactor);
+
+                // Fade-in band: below grabDeadZoneSpeed, multiply normalRate by a
+        // linear ramp from deadZoneFadeMin (at speed 0) up to 1 (at the
+        // dead-zone speed). Above the band the multiplier is 1. Setting
+        // deadZoneFadeMin to 0 restores the old "fade fully to zero" feel;
+        // setting it to 1 disables the band entirely.
+        float fade = 1f;
+        if (grabDeadZoneSpeed > 0.0001f && mouseSpeed < grabDeadZoneSpeed)
+        {
+            float t = mouseSpeed / grabDeadZoneSpeed;   // 0..1 across the band
+            fade = Mathf.Lerp(deadZoneFadeMin, 1f, t);
+        }
+
+        float followRate = normalRate * fade;
+
+        // ---- DIAGNOSTIC: uncomment to trace while tuning ----
+        // Debug.Log($"[Rot] speed={mouseSpeed:F1} factor={speedFactor:F3} eased={easedFactor:F3} rate={followRate:F2}");
+
+        float moveAngleDeg = Mathf.Atan2(dirDelta.y, dirDelta.x) * Mathf.Rad2Deg;
         float targetRotation = moveAngleDeg - _grabLocalAngleDeg;
-        targetRotation       = Mathf.Repeat(targetRotation + 180f, 360f) - 180f;
+        targetRotation = Mathf.Repeat(targetRotation + 180f, 360f) - 180f;
 
-        // Ease currentTipAngle toward targetRotation at max turn speed.
-        float deltaAngle = Mathf.DeltaAngle(currentTipAngle, targetRotation);
-        float maxStep    = grabTurnSpeedDegPerSec * Time.deltaTime;
-        if (Mathf.Abs(deltaAngle) <= maxStep)
-            currentTipAngle = targetRotation;
-        else
-            currentTipAngle += Mathf.Sign(deltaAngle) * maxStep;
+        float deltaAngle      = Mathf.DeltaAngle(currentTipAngle, targetRotation);
+        float closedThisWindow = deltaAngle * (1f - Mathf.Exp(-followRate * dt));
+        currentTipAngle      += closedThisWindow;
 
         currentTipAngle  = Mathf.Repeat(currentTipAngle + 180f, 360f) - 180f;
         smoothedTipAngle = currentTipAngle;
 
-        // Teleport rotation directly — same mechanism the ball uses for position.
         Quaternion q = Quaternion.Euler(0f, 0f, currentTipAngle);
+        GetComponent<RotationWatcher>()?.NoteSource("ApplyRotateDrag");
         transform.rotation = q;
         if (body != null) body.rotation = currentTipAngle;
     }
+    
+        /// <summary>The angle the triangle actually has after this frame's drag step.</summary>
+    public float CurrentAngle => currentTipAngle;
 
+    /// <summary>Kept for compatibility. Same value as CurrentAngle.</summary>
     public float CurrentTargetAngle => currentTipAngle;
 
     /// <summary>

@@ -201,26 +201,42 @@ public class BallDrag : MonoBehaviour
         previousMousePosition = mousePosition;
         Vector2 movement = (Vector2)(nextPosition - transform.position);
 
-        if (directionalOperator != null && directionalOperator.IsActive)
+                if (directionalOperator != null && directionalOperator.IsActive)
         {
             directionalOperator.ApplyRotateDrag(mouseDelta);
 
-            if (useKinematicOperatorDrag)
+                        if (useKinematicOperatorDrag)
             {
-                float targetAngle = directionalOperator.CurrentTargetAngle;
-                Vector2 pinnedPos = directionalOperator.CenterForMouseToKeepGrabPoint(
-                    mousePosition, targetAngle);
+                float achievedAngle = directionalOperator.CurrentAngle;
 
-                // Teleport both body and transform — same mechanism the ball uses.
-                body.position      = pinnedPos;
-                transform.position = pinnedPos;
-                body.rotation      = targetAngle;
-                transform.rotation = Quaternion.Euler(0f, 0f, targetAngle);
+                Vector2 finalPos;
+                if (directionalOperator.PinGrabPointToCursor)
+                {
+                    // Pin: keep the grabbed point under the cursor. The center
+                    // shifts to compensate for rotation this frame.
+                    finalPos = directionalOperator.CenterForMouseToKeepGrabPoint(
+                        mousePosition, achievedAngle);
+                }
+                else
+                {
+                    // Free: translate the center by the raw mouse delta only.
+                    // The triangle can drift relative to the cursor while it
+                    // rotates, which removes the pin feedback entirely.
+                    finalPos = (Vector2)transform.position + mouseDelta;
+                }
+
+                body.position      = finalPos;
+                transform.position = finalPos;
+                body.rotation      = achievedAngle;
+                GetComponent<RotationWatcher>()?.NoteSource("BallDragPin");
+                transform.rotation = Quaternion.Euler(0f, 0f, achievedAngle);
+
+                body.angularVelocity = 0f;
 
                 if (networkBall != null && networkBall.IsSpawned &&
                     networkBall.CurrentZone.Value == (byte)BallZone.ServerBoard)
                 {
-                    networkBall.RequestBoardMoveServerRpc(pinnedPos, targetAngle);
+                    networkBall.RequestBoardMoveServerRpc(finalPos, achievedAngle);
                 }
             }
         }

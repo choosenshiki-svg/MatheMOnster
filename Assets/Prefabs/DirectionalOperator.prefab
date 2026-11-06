@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 7235864016837437574}
   - component: {fileID: -6781328849206128599}
   - component: {fileID: -4843426481836650546}
-  - component: {fileID: 1803972391886992646}
+  - component: {fileID: 5296912365116085005}
   m_Layer: 8
   m_Name: DirectionalOperator
   m_TagString: Untagged
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxPostCollisionSpeed: 1
---- !u!114 &1803972391886992646
+--- !u!114 &5296912365116085005
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,4 +296,9 @@ MonoBehaviour:
   outputConeHalfAngle: 75
   capturePadding: 0.1
   tipTurnSpeedDegPerSec: 720
-  grabTurnSpeedDegPerSec: 200
+  pinGrabPointToCursor: 1
+  grabDeadZoneSpeed: 10
+  deadZoneFadeMin: 0.4
+  grabMinFollowRate: 1.5
+  grabMaxFollowRate: 30
+  grabMidpointMouseSpeed: 150

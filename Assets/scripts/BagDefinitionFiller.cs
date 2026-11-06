@@ -148,33 +148,35 @@ public static class BagDefinitionFiller
         Add(def, "9", 1); 
         Add(def, "10", 1); 
 
-         Add(def, "-1", 5); //
-        Add(def, "-2", 3); //
-        Add(def, "-3", 2); //
-        Add(def, "-4", 1); //
-        Add(def, "-5", 1); 
+         Add(def, "-1", 2); //
+        Add(def, "-2", 1); //
+        Add(def, "-3", 1); //
+        Add(def, "-4", 0); //
+        Add(def, "-5", 0); 
         Add(def, "-6", 1); 
         Add(def, "-7", 0); 
-        Add(def, "-8", 1);  
+        Add(def, "-8", 0);  
         Add(def, "-9", 0); 
         Add(def, "-10", 0); 
 
-        Add(def, "+", 12); //
-        Add(def, "*", 10); //
-        Add(def, "/", 2); 
-        Add(def, "/3", 1); 
-        Add(def, "/4", 1); 
-        Add(def, "/5", 1); 
-        Add(def, "/6", 1);
+        Add(def, "+", 8); //
+        Add(def, "-", 6); //
+        Add(def, "*", 2); //
+        Add(def, "/", 4); 
+        Add(def, "/2", 2); 
+        Add(def, "/4", 0); 
+        Add(def, "/5", 0); 
+        Add(def, "/6", 0);
 
-        Add(def, "^", 3);
-        Add(def, "^3", 2);
-        Add(def, "^4", 1);
+        Add(def, "^", 2);
+        Add(def, "^2", 1);
+        Add(def, "^3", 1);
+        Add(def, "^4", 0);
 
 
-        Add(def, "=", 6); //
-        Add(def, "x", 1); 
-        Add(def, "y", 1); 
+        Add(def, "=", 12); //
+        Add(def, "x", 0); 
+        Add(def, "y", 0); 
       
 
     }
